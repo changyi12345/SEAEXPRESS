@@ -1,0 +1,15 @@
+[build]
+  base = "frontend/shop-admin"
+  command = "npm install --no-workspaces && npm run build"
+  publish = "dist"
+
+[build.environment]
+  SECRETS_SCAN_ENABLED = "true"
+  SECRETS_SCAN_OMIT_KEYS = "PORT,NODE_ENV"
+  SECRETS_SCAN_OMIT_PATHS = "*.md,*.example,dist/**,node_modules/**,**/*.md,**/dist/**"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
