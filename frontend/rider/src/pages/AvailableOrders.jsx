@@ -80,11 +80,11 @@ export default function AvailableOrders() {
   }
 
   if (loading) {
-    return <div className="container mx-auto px-4 py-8 text-center">Loading...</div>
+    return <div className="container mx-auto px-3 sm:px-4 py-8 text-center">Loading...</div>
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-3 sm:px-4 py-4 md:py-8">
       {toast && (
         <Toast
           message={toast.message}
@@ -92,23 +92,23 @@ export default function AvailableOrders() {
           onClose={() => setToast(null)}
         />
       )}
-      <h1 className="text-3xl font-bold mb-6">Available Orders</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6">Available Orders</h1>
 
       {orders.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-gray-500">No available orders at the moment</p>
+          <p className="text-gray-500 text-sm sm:text-base">No available orders at the moment</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {orders.map((order) => (
-            <div key={order._id} className="bg-white rounded-lg shadow p-6">
-              <div className="flex items-center justify-between">
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold mb-2">Order #{order.orderNumber}</h3>
-                  <p className="text-gray-600 mb-2">
+            <div key={order._id} className="bg-white rounded-lg shadow p-4 md:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2">Order #{order.orderNumber}</h3>
+                  <p className="text-sm sm:text-base text-gray-600 mb-2">
                     {order.restaurant?.name || order.shop?.name}
                   </p>
-                  <div className="space-y-1 text-sm text-gray-600">
+                  <div className="space-y-1.5 text-xs sm:text-sm text-gray-600">
                     <p><strong>Customer:</strong> {order.user?.name} - {order.user?.phone}</p>
                     {order.orderType === 'user-to-user' && order.pickupAddress && (
                       <>
@@ -119,21 +119,21 @@ export default function AvailableOrders() {
                     {order.orderType !== 'user-to-user' && (
                       <>
                         <p><strong>📍 Pickup From:</strong> {order.restaurant?.name || order.shop?.name} - {order.restaurant?.address?.township || order.shop?.address?.township}, {order.restaurant?.address?.zone || order.shop?.address?.zone}</p>
-                        <p className="text-xs text-gray-500 ml-4">{order.restaurant?.address?.street || order.shop?.address?.street}</p>
-                        <p className="text-xs text-gray-500 ml-4">Phone: {order.restaurant?.phone || order.shop?.phone}</p>
+                        <p className="text-xs text-gray-500 ml-2 sm:ml-4">{order.restaurant?.address?.street || order.shop?.address?.street}</p>
+                        <p className="text-xs text-gray-500 ml-2 sm:ml-4">Phone: {order.restaurant?.phone || order.shop?.phone}</p>
                         <p><strong>🚚 Delivery To:</strong> {order.deliveryAddress?.name || order.user?.name} - {order.deliveryAddress?.township}, {order.deliveryAddress?.zone}</p>
-                        <p className="text-xs text-gray-500 ml-4">{order.deliveryAddress?.street}</p>
-                        <p className="text-xs text-gray-500 ml-4">Phone: {order.deliveryAddress?.phone || order.user?.phone}</p>
+                        <p className="text-xs text-gray-500 ml-2 sm:ml-4">{order.deliveryAddress?.street}</p>
+                        <p className="text-xs text-gray-500 ml-2 sm:ml-4">Phone: {order.deliveryAddress?.phone || order.user?.phone}</p>
                       </>
                     )}
                     <p><strong>Total:</strong> <span className="text-primary font-bold">{order.total} Ks</span></p>
                     <p><strong>Delivery Fee:</strong> {order.deliveryFee} Ks (You get: {Math.round(order.deliveryFee * 0.8)} Ks)</p>
                   </div>
                 </div>
-                <div className="ml-6">
+                <div className="sm:ml-4 sm:flex-shrink-0 w-full sm:w-auto">
                   <button
                     onClick={() => handleAccept(order._id)}
-                    className="bg-accent text-white px-6 py-3 rounded-lg hover:bg-green-600 transition font-semibold"
+                    className="w-full sm:w-auto bg-accent text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:bg-green-600 active:bg-green-700 transition font-semibold text-sm sm:text-base touch-manipulation"
                   >
                     Accept Order
                   </button>

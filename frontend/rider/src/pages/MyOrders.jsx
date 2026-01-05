@@ -127,17 +127,17 @@ export default function MyOrders() {
   }
 
   if (loading) {
-    return <div className="container mx-auto px-4 py-8 text-center">Loading...</div>
+    return <div className="container mx-auto px-3 sm:px-4 py-8 text-center">Loading...</div>
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold">My Orders</h1>
+    <div className="container mx-auto px-3 sm:px-4 py-4 md:py-8">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4 md:mb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold">My Orders</h1>
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
-          className="px-4 py-2 border rounded"
+          className="px-3 sm:px-4 py-2 border rounded text-sm sm:text-base w-full sm:w-auto touch-manipulation"
         >
           <option value="">All Orders</option>
           <option value="rider-assigned">Assigned</option>
@@ -149,40 +149,40 @@ export default function MyOrders() {
 
       {orders.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-gray-500">No orders found</p>
+          <p className="text-gray-500 text-sm sm:text-base">No orders found</p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {orders.map((order) => (
             <Link
               key={order._id}
               to={`/orders/${order._id}`}
-              className="block bg-white rounded-lg shadow p-6 hover:shadow-lg transition"
+              className="block bg-white rounded-lg shadow p-4 md:p-6 hover:shadow-lg active:shadow-md transition touch-manipulation"
             >
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Order #{order.orderNumber}</h3>
-                  <p className="text-gray-600 mb-2">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Order #{order.orderNumber}</h3>
+                  <p className="text-sm sm:text-base text-gray-600 mb-1 sm:mb-2">
                     {order.restaurant?.name || order.shop?.name}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-xs sm:text-sm text-gray-500 mb-1">
                     Customer: {order.user?.name} - {order.user?.phone}
                   </p>
                   {order.orderType === 'user-to-user' && order.pickupAddress && (
-                    <p className="text-sm text-primary">
+                    <p className="text-xs sm:text-sm text-primary mb-1">
                       📍 Pickup: {order.pickupAddress.name} - {order.pickupAddress.township}
                     </p>
                   )}
-                  <p className="text-sm text-gray-500">
+                  <p className="text-xs sm:text-sm text-gray-500">
                     🚚 Delivery: {order.deliveryAddress?.township}, {order.deliveryAddress?.zone}
                   </p>
                 </div>
-                <div className="text-right">
-                  <span className={`px-3 py-1 rounded-full text-sm ${getStatusColor(order.status)}`}>
+                <div className="text-left sm:text-right flex-shrink-0">
+                  <span className={`inline-block px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm ${getStatusColor(order.status)}`}>
                     {getStatusText(order.status)}
                   </span>
-                  <p className="text-primary font-bold mt-2">{order.total} Ks</p>
-                  <p className="text-sm text-gray-500">Fee: {order.deliveryFee} Ks</p>
+                  <p className="text-primary font-bold mt-2 text-base sm:text-lg">{order.total} Ks</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Fee: {order.deliveryFee} Ks</p>
                 </div>
               </div>
             </Link>

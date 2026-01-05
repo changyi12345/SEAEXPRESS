@@ -151,11 +151,11 @@ export default function OrderDetail() {
   }
 
   if (loading) {
-    return <div className="container mx-auto px-4 py-8 text-center">Loading...</div>
+    return <div className="container mx-auto px-3 sm:px-4 py-8 text-center">Loading...</div>
   }
 
   if (!order) {
-    return <div className="container mx-auto px-4 py-8 text-center">Order not found</div>
+    return <div className="container mx-auto px-3 sm:px-4 py-8 text-center">Order not found</div>
   }
 
   const canUpdateStatus = (status) => {
@@ -170,7 +170,7 @@ export default function OrderDetail() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-3 sm:px-4 py-4 md:py-8">
       {toast && (
         <Toast
           message={toast.message}
@@ -178,12 +178,12 @@ export default function OrderDetail() {
           onClose={() => setToast(null)}
         />
       )}
-      <h1 className="text-3xl font-bold mb-6">Order #{order.orderNumber}</h1>
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6">Order #{order.orderNumber}</h1>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="space-y-6">
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4">Order Details</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        <div className="space-y-4 md:space-y-6">
+          <div className="bg-white rounded-lg shadow p-4 md:p-6">
+            <h2 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4">Order Details</h2>
             <div className="space-y-2">
               <p><strong>Status:</strong> <span className="text-primary">{order.status}</span></p>
               <p><strong>Order Type:</strong> {order.orderType === 'user-to-user' ? 'User-to-User Delivery' : (order.restaurant ? 'Restaurant' : 'Shop')}</p>
@@ -194,14 +194,14 @@ export default function OrderDetail() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4">Customer Information</h2>
+          <div className="bg-white rounded-lg shadow p-4 md:p-6">
+            <h2 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4">Customer Information</h2>
             <div className="space-y-2">
               <p><strong>Name:</strong> {order.user?.name}</p>
               <p><strong>Phone:</strong> 
                 <button
                   onClick={() => handleCall(order.user?.phone)}
-                  className="ml-2 bg-secondary text-white px-3 py-1 rounded hover:bg-blue-600 transition"
+                  className="ml-2 bg-secondary text-white px-3 py-1.5 rounded hover:bg-blue-600 active:bg-blue-700 transition text-sm touch-manipulation"
                 >
                   Call
                 </button>
@@ -210,8 +210,8 @@ export default function OrderDetail() {
           </div>
 
           {(order.orderType === 'user-to-user' && order.pickupAddress) || (order.orderType !== 'user-to-user' && (order.restaurant || order.shop)) ? (
-            <div className="bg-white rounded-lg shadow p-6 border-l-4 border-primary">
-              <h2 className="text-xl font-semibold mb-4 text-primary">📍 Pickup Location (ယူရမည့်နေရာ)</h2>
+            <div className="bg-white rounded-lg shadow p-4 md:p-6 border-l-4 border-primary">
+              <h2 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4 text-primary">📍 Pickup Location (ယူရမည့်နေရာ)</h2>
               <div className="space-y-2">
                 {order.orderType === 'user-to-user' && order.pickupAddress ? (
                   <>
@@ -221,7 +221,7 @@ export default function OrderDetail() {
                     <p>Phone: 
                       <button
                         onClick={() => handleCall(order.pickupAddress.phone)}
-                        className="ml-2 bg-primary text-white px-3 py-1 rounded hover:bg-primary-dark transition text-sm"
+                        className="ml-2 bg-primary text-white px-3 py-1.5 rounded hover:bg-primary-dark active:bg-primary-dark transition text-sm touch-manipulation"
                       >
                         Call
                       </button>
@@ -238,7 +238,7 @@ export default function OrderDetail() {
                     <p>Phone: 
                       <button
                         onClick={() => handleCall(order.restaurant?.phone || order.shop?.phone)}
-                        className="ml-2 bg-primary text-white px-3 py-1 rounded hover:bg-primary-dark transition text-sm"
+                        className="ml-2 bg-primary text-white px-3 py-1.5 rounded hover:bg-primary-dark active:bg-primary-dark transition text-sm touch-manipulation"
                       >
                         Call
                       </button>
@@ -259,8 +259,8 @@ export default function OrderDetail() {
             </div>
           ) : null}
 
-          <div className="bg-white rounded-lg shadow p-6 border-l-4 border-accent">
-            <h2 className="text-xl font-semibold mb-4 text-accent">🚚 Delivery Location (ပို့ပေးရမည့်နေရာ)</h2>
+          <div className="bg-white rounded-lg shadow p-4 md:p-6 border-l-4 border-accent">
+            <h2 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4 text-accent">🚚 Delivery Location (ပို့ပေးရမည့်နေရာ)</h2>
             {order.orderType === 'user-to-user' && order.deliveryAddress?.name && (
               <p><strong>To:</strong> {order.deliveryAddress.name}</p>
             )}
@@ -269,7 +269,7 @@ export default function OrderDetail() {
             <p>Phone: 
               <button
                 onClick={() => handleCall(order.deliveryAddress?.phone)}
-                className="ml-2 bg-accent text-white px-3 py-1 rounded hover:bg-green-600 transition text-sm"
+                className="ml-2 bg-accent text-white px-3 py-1.5 rounded hover:bg-green-600 active:bg-green-700 transition text-sm touch-manipulation"
               >
                 Call
               </button>
