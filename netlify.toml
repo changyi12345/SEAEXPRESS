@@ -1,0 +1,9 @@
+[build]
+  command = "npm install --legacy-peer-deps && cd frontend/user && npm run build"
+  publish = "frontend/user/dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
