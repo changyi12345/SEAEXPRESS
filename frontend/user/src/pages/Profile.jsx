@@ -186,43 +186,43 @@ export default function Profile() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-4 md:py-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <div className="flex items-center space-x-6">
+        <div className="bg-white rounded-lg shadow p-4 md:p-6 mb-4 md:mb-6">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
             <div className="relative">
               {user?.avatar ? (
                 <img
                   src={user.avatar}
                   alt={user.name}
-                  className="w-24 h-24 rounded-full object-cover border-4 border-primary"
+                  className="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover border-4 border-primary"
                 />
               ) : (
-                <div className="w-24 h-24 rounded-full bg-primary flex items-center justify-center text-white text-3xl font-bold border-4 border-primary">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-primary flex items-center justify-center text-white text-2xl sm:text-3xl font-bold border-4 border-primary">
                   {user?.name?.charAt(0).toUpperCase() || 'U'}
                 </div>
               )}
-              <div className="absolute bottom-0 right-0 bg-accent rounded-full p-2 border-4 border-white">
-                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="absolute bottom-0 right-0 bg-accent rounded-full p-1.5 sm:p-2 border-4 border-white">
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
             </div>
-            <div className="flex-1">
-              <h1 className="text-3xl font-bold text-primary">{user?.name || 'User'}</h1>
-              <p className="text-gray-600">{user?.email}</p>
-              <p className="text-sm text-gray-500">{user?.phone}</p>
+            <div className="flex-1 text-center sm:text-left">
+              <h1 className="text-2xl sm:text-3xl font-bold text-primary">{user?.name || 'User'}</h1>
+              <p className="text-sm sm:text-base text-gray-600">{user?.email}</p>
+              <p className="text-xs sm:text-sm text-gray-500">{user?.phone}</p>
             </div>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="bg-white rounded-lg shadow mb-6">
-          <div className="flex border-b">
+        <div className="bg-white rounded-lg shadow mb-4 md:mb-6 overflow-x-auto">
+          <div className="flex border-b min-w-max sm:min-w-0">
             <button
               onClick={() => setActiveTab('profile')}
-              className={`px-6 py-4 font-semibold transition ${
+              className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition whitespace-nowrap ${
                 activeTab === 'profile'
                   ? 'border-b-2 border-primary text-primary'
                   : 'text-gray-600 hover:text-primary'
@@ -232,7 +232,7 @@ export default function Profile() {
             </button>
             <button
               onClick={() => setActiveTab('password')}
-              className={`px-6 py-4 font-semibold transition ${
+              className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition whitespace-nowrap ${
                 activeTab === 'password'
                   ? 'border-b-2 border-primary text-primary'
                   : 'text-gray-600 hover:text-primary'
@@ -245,7 +245,7 @@ export default function Profile() {
                 setActiveTab('orders')
                 fetchOrders()
               }}
-              className={`px-6 py-4 font-semibold transition ${
+              className={`px-4 sm:px-6 py-3 sm:py-4 font-semibold text-sm sm:text-base transition whitespace-nowrap ${
                 activeTab === 'orders'
                   ? 'border-b-2 border-primary text-primary'
                   : 'text-gray-600 hover:text-primary'
@@ -257,9 +257,9 @@ export default function Profile() {
         </div>
 
         {/* Tab Content */}
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 md:p-6">
           {message && (
-            <div className={`mb-6 p-4 rounded-lg ${
+            <div className={`mb-4 md:mb-6 p-3 md:p-4 rounded-lg text-sm sm:text-base ${
               message.includes('success') 
                 ? 'bg-green-100 text-green-800 border border-green-300' 
                 : 'bg-red-100 text-red-800 border border-red-300'
@@ -270,13 +270,13 @@ export default function Profile() {
 
           {/* Profile Tab */}
           {activeTab === 'profile' && (
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               <div>
-                <h2 className="text-2xl font-bold mb-4">Profile Information</h2>
+                <h2 className="text-xl sm:text-2xl font-bold mb-3 md:mb-4">Profile Information</h2>
                 
                 {/* Profile Picture Upload */}
-                <div className="mb-6">
-                  <label className="block mb-2 font-semibold">Profile Picture</label>
+                <div className="mb-4 md:mb-6">
+                  <label className="block mb-2 font-semibold text-sm sm:text-base">Profile Picture</label>
                   <ImageUpload
                     label=""
                     existingImage={user?.avatar}
@@ -286,34 +286,36 @@ export default function Profile() {
 
                 <form onSubmit={handleProfileUpdate} className="space-y-4">
                   <div>
-                    <label className="block mb-2 font-semibold">Name *</label>
+                    <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Name *</label>
                     <input
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
                       required
                     />
                   </div>
 
                   <div>
-                    <label className="block mb-2 font-semibold">Email</label>
+                    <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Email</label>
                     <input
                       type="email"
                       value={user?.email || ''}
                       disabled
-                      className="w-full px-4 py-2 border rounded-lg bg-gray-100 text-gray-600"
+                      className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg bg-gray-100 text-gray-600"
                     />
-                    <p className="text-sm text-gray-500 mt-1">Email cannot be changed</p>
+                    <p className="text-sm text-gray-500 mt-1.5">Email cannot be changed</p>
                   </div>
 
                   <div>
-                    <label className="block mb-2 font-semibold">Phone *</label>
+                    <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Phone *</label>
                     <input
                       type="tel"
+                      inputMode="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
+                      placeholder="09xxxxxxxxx"
                       required
                     />
                   </div>
@@ -369,7 +371,7 @@ export default function Profile() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition font-semibold disabled:opacity-50 w-full md:w-auto"
+                    className="bg-primary text-white px-6 py-3.5 rounded-lg hover:bg-primary-dark active:bg-primary-dark transition font-semibold disabled:opacity-50 w-full md:w-auto touch-manipulation min-h-[44px] shadow-md"
                   >
                     {loading ? 'Updating...' : 'Update Profile'}
                   </button>
@@ -381,39 +383,45 @@ export default function Profile() {
           {/* Password Change Tab */}
           {activeTab === 'password' && (
             <div>
-              <h2 className="text-2xl font-bold mb-4">Change Password</h2>
+              <h2 className="text-xl sm:text-2xl font-bold mb-4">Change Password</h2>
               <form onSubmit={handlePasswordChange} className="space-y-4 max-w-md">
                 <div>
-                  <label className="block mb-2 font-semibold">Current Password *</label>
+                  <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Current Password *</label>
                   <input
                     type="password"
+                    autoComplete="current-password"
                     value={passwordData.currentPassword}
                     onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
+                    placeholder="Enter current password"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block mb-2 font-semibold">New Password *</label>
+                  <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">New Password *</label>
                   <input
                     type="password"
+                    autoComplete="new-password"
                     value={passwordData.newPassword}
                     onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
+                    placeholder="At least 6 characters"
                     required
                     minLength={6}
                   />
-                  <p className="text-sm text-gray-500 mt-1">Must be at least 6 characters</p>
+                  <p className="text-sm text-gray-500 mt-1.5">Must be at least 6 characters</p>
                 </div>
 
                 <div>
-                  <label className="block mb-2 font-semibold">Confirm New Password *</label>
+                  <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Confirm New Password *</label>
                   <input
                     type="password"
+                    autoComplete="new-password"
                     value={passwordData.confirmPassword}
                     onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
+                    placeholder="Confirm new password"
                     required
                     minLength={6}
                   />
@@ -422,7 +430,7 @@ export default function Profile() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition font-semibold disabled:opacity-50 w-full md:w-auto"
+                  className="bg-primary text-white px-6 py-3.5 rounded-lg hover:bg-primary-dark active:bg-primary-dark transition font-semibold disabled:opacity-50 w-full md:w-auto touch-manipulation min-h-[44px] shadow-md"
                 >
                   {loading ? 'Changing...' : 'Change Password'}
                 </button>

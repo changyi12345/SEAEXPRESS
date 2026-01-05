@@ -143,51 +143,54 @@ export default function Delivery() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">ပစ္စည်းပို့ဆောင်မှု (User-to-User Delivery)</h1>
+    <div className="container mx-auto px-4 py-4 md:py-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6">ပစ္စည်းပို့ဆောင်မှု (User-to-User Delivery)</h1>
 
       <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {/* Pickup Address */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4 text-primary">ယူရမည့်နေရာ (Pickup Location)</h2>
-            <div className="space-y-4">
+          <div className="bg-white rounded-lg shadow p-4 md:p-6">
+            <h2 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4 text-primary">ယူရမည့်နေရာ (Pickup Location)</h2>
+            <div className="space-y-3 md:space-y-4">
               <div>
-                <label className="block mb-2 font-semibold">Sender Name *</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Sender Name *</label>
                 <input
                   type="text"
                   value={pickupAddress.name}
                   onChange={(e) => setPickupAddress({ ...pickupAddress, name: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
+                  placeholder="Enter sender name"
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-semibold">Street Address *</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Street Address *</label>
                 <input
                   type="text"
                   value={pickupAddress.street}
                   onChange={(e) => setPickupAddress({ ...pickupAddress, street: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
+                  placeholder="Street, Building, etc."
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-semibold">Township *</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Township *</label>
                 <input
                   type="text"
                   value={pickupAddress.township}
                   onChange={(e) => setPickupAddress({ ...pickupAddress, township: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
+                  placeholder="Enter township"
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-semibold">Zone *</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Zone *</label>
                 <select
                   value={pickupAddress.zone}
                   onChange={(e) => setPickupAddress({ ...pickupAddress, zone: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
                   required
                 >
                   <option value="">Select Zone</option>
@@ -198,21 +201,23 @@ export default function Delivery() {
                 </select>
               </div>
               <div>
-                <label className="block mb-2 font-semibold">Phone *</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Phone *</label>
                 <input
                   type="tel"
+                  inputMode="tel"
                   value={pickupAddress.phone}
                   onChange={(e) => setPickupAddress({ ...pickupAddress, phone: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
+                  placeholder="09xxxxxxxxx"
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-semibold">Pickup Notes</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base text-gray-700">Pickup Notes</label>
                 <textarea
                   value={pickupAddress.notes}
                   onChange={(e) => setPickupAddress({ ...pickupAddress, notes: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
                   rows="3"
                   placeholder="Pickup instructions..."
                 />
@@ -221,45 +226,45 @@ export default function Delivery() {
           </div>
 
           {/* Delivery Address */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4 text-accent">ပို့ပေးရမည့်နေရာ (Delivery Location)</h2>
-            <div className="space-y-4">
+          <div className="bg-white rounded-lg shadow p-4 md:p-6">
+            <h2 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4 text-accent">ပို့ပေးရမည့်နေရာ (Delivery Location)</h2>
+            <div className="space-y-3 md:space-y-4">
               <div>
-                <label className="block mb-2 font-semibold">Recipient Name *</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base">Recipient Name *</label>
                 <input
                   type="text"
                   value={deliveryAddress.name}
                   onChange={(e) => setDeliveryAddress({ ...deliveryAddress, name: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-semibold">Street Address *</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base">Street Address *</label>
                 <input
                   type="text"
                   value={deliveryAddress.street}
                   onChange={(e) => setDeliveryAddress({ ...deliveryAddress, street: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-semibold">Township *</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base">Township *</label>
                 <input
                   type="text"
                   value={deliveryAddress.township}
                   onChange={(e) => setDeliveryAddress({ ...deliveryAddress, township: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-semibold">Zone *</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base">Zone *</label>
                 <select
                   value={deliveryAddress.zone}
                   onChange={(e) => setDeliveryAddress({ ...deliveryAddress, zone: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 >
                   <option value="">Select Zone</option>
@@ -270,21 +275,21 @@ export default function Delivery() {
                 </select>
               </div>
               <div>
-                <label className="block mb-2 font-semibold">Phone *</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base">Phone *</label>
                 <input
                   type="tel"
                   value={deliveryAddress.phone}
                   onChange={(e) => setDeliveryAddress({ ...deliveryAddress, phone: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-semibold">Delivery Notes</label>
+                <label className="block mb-2 font-semibold text-sm sm:text-base">Delivery Notes</label>
                 <textarea
                   value={deliveryAddress.notes}
                   onChange={(e) => setDeliveryAddress({ ...deliveryAddress, notes: e.target.value })}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   rows="3"
                   placeholder="Delivery instructions..."
                 />
@@ -294,14 +299,14 @@ export default function Delivery() {
         </div>
 
         {/* Payment & Summary */}
-        <div className="mt-8 bg-white rounded-lg shadow p-6">
-          <div className="grid md:grid-cols-2 gap-6">
+        <div className="mt-6 md:mt-8 bg-white rounded-lg shadow p-4 md:p-6">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
             <div>
-              <h3 className="font-semibold mb-4">Payment Method</h3>
+              <h3 className="font-semibold mb-3 md:mb-4 text-sm sm:text-base">Payment Method</h3>
               <select
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="cod">Cash on Delivery</option>
                 <option value="kbzpay">KBZ Pay</option>
@@ -310,13 +315,13 @@ export default function Delivery() {
               </select>
             </div>
             <div>
-              <h3 className="font-semibold mb-4">Order Summary</h3>
+              <h3 className="font-semibold mb-3 md:mb-4 text-sm sm:text-base">Order Summary</h3>
               <div className="space-y-2">
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm sm:text-base">
                   <span>Delivery Fee</span>
                   <span className="font-bold text-primary">{deliveryFee} Ks</span>
                 </div>
-                <div className="border-t pt-2 flex justify-between font-bold text-lg">
+                <div className="border-t pt-2 flex justify-between font-bold text-base sm:text-lg">
                   <span>Total</span>
                   <span className="text-primary">{deliveryFee} Ks</span>
                 </div>
@@ -327,9 +332,19 @@ export default function Delivery() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-6 bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition font-semibold disabled:opacity-50"
+            className="w-full mt-4 md:mt-6 bg-primary text-white py-4 rounded-lg hover:bg-primary-dark active:bg-primary-dark transition font-semibold disabled:opacity-50 text-base sm:text-lg touch-manipulation min-h-[52px] shadow-lg"
           >
-            {loading ? 'Creating Order...' : 'Create Delivery Order'}
+            {loading ? (
+              <span className="flex items-center justify-center">
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Creating Order...
+              </span>
+            ) : (
+              'Create Delivery Order'
+            )}
           </button>
         </div>
       </form>

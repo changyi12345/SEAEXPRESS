@@ -185,61 +185,61 @@ export default function OrderDetail() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Order #{order.orderNumber}</h1>
+    <div className="container mx-auto px-4 py-4 md:py-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6">Order #{order.orderNumber}</h1>
 
-      <div className="bg-white rounded-lg shadow p-6 mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-4">
-            <span className={`px-3 py-1 rounded-full text-sm ${getStatusColor(order.status)}`}>
+      <div className="bg-white rounded-lg shadow p-4 md:p-6 mb-4 md:mb-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className={`px-3 py-1 rounded-full text-xs sm:text-sm ${getStatusColor(order.status)}`}>
               {getStatusText(order.status)}
             </span>
             {canCancelOrder() && (
               <button
                 onClick={handleCancelOrder}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition text-sm"
+                className="bg-red-500 text-white px-3 py-2 sm:px-4 rounded-lg hover:bg-red-600 transition text-xs sm:text-sm"
               >
                 Cancel Order
               </button>
             )}
           </div>
-          <span className="text-primary font-bold text-xl">{order.total} Ks</span>
+          <span className="text-primary font-bold text-lg sm:text-xl">{order.total} Ks</span>
         </div>
 
-        <div className="space-y-2 mb-4">
+        <div className="space-y-2 mb-4 text-sm sm:text-base">
           <p><strong>Order Type:</strong> {order.orderType === 'user-to-user' ? 'User-to-User Delivery' : (order.restaurant ? 'Restaurant' : 'Shop')}</p>
           {order.restaurant && <p><strong>Restaurant:</strong> {order.restaurant.name}</p>}
           {order.shop && <p><strong>Shop:</strong> {order.shop.name}</p>}
           <p><strong>Payment Method:</strong> {order.paymentMethod.toUpperCase()}</p>
           <p><strong>Payment Status:</strong> {order.paymentStatus}</p>
           {order.rider && (
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
               <p><strong>Rider:</strong> {order.rider.name} - {order.rider.phone}</p>
               <a
                 href={`tel:${order.rider.phone}`}
-                className="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition text-sm"
+                className="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition text-xs sm:text-sm whitespace-nowrap"
               >
                 📞 Call Rider
               </a>
             </div>
           )}
           {order.restaurant && order.restaurant.phone && (
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
               <p><strong>Restaurant Phone:</strong> {order.restaurant.phone}</p>
               <a
                 href={`tel:${order.restaurant.phone}`}
-                className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition text-sm"
+                className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition text-xs sm:text-sm whitespace-nowrap"
               >
                 📞 Call Restaurant
               </a>
             </div>
           )}
           {order.shop && order.shop.phone && (
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
               <p><strong>Shop Phone:</strong> {order.shop.phone}</p>
               <a
                 href={`tel:${order.shop.phone}`}
-                className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition text-sm"
+                className="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 transition text-xs sm:text-sm whitespace-nowrap"
               >
                 📞 Call Shop
               </a>
@@ -291,10 +291,10 @@ export default function OrderDetail() {
       </div>
 
       {order.items && order.items.length > 0 && (
-        <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-4">Items</h2>
+        <div className="bg-white rounded-lg shadow p-4 md:p-6 mb-4 md:mb-6">
+          <h2 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4">Items</h2>
           {order.items.map((item, index) => (
-            <div key={index} className="flex items-center justify-between border-b pb-4 mb-4">
+            <div key={index} className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b pb-4 mb-4 gap-3">
               <div>
                 <h3 className="font-semibold">{item.name}</h3>
                 <p className="text-sm text-gray-600">{item.nameMyanmar}</p>
@@ -321,13 +321,13 @@ export default function OrderDetail() {
       )}
 
       {order.orderType === 'user-to-user' && (
-        <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-4">Delivery Summary</h2>
-          <div className="flex justify-between">
+        <div className="bg-white rounded-lg shadow p-4 md:p-6 mb-4 md:mb-6">
+          <h2 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4">Delivery Summary</h2>
+          <div className="flex justify-between text-sm sm:text-base">
             <span>Delivery Fee</span>
             <span className="text-primary font-bold">{order.deliveryFee} Ks</span>
           </div>
-          <div className="flex justify-between font-bold text-lg pt-2 border-t mt-2">
+          <div className="flex justify-between font-bold text-base sm:text-lg pt-2 border-t mt-2">
             <span>Total</span>
             <span className="text-primary">{order.total} Ks</span>
           </div>
@@ -335,16 +335,16 @@ export default function OrderDetail() {
       )}
 
       {order.status === 'delivered' && !order.rating && (
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4">Rate Your Order</h2>
+        <div className="bg-white rounded-lg shadow p-4 md:p-6">
+          <h2 className="text-lg sm:text-xl font-semibold mb-3 md:mb-4">Rate Your Order</h2>
           <div className="mb-4">
-            <label className="block mb-2">Rating</label>
+            <label className="block mb-2 text-sm sm:text-base">Rating</label>
             <div className="flex space-x-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
                   key={star}
                   onClick={() => setRating(star)}
-                  className={`text-3xl ${star <= rating ? 'text-yellow-500' : 'text-gray-300'}`}
+                  className={`text-2xl sm:text-3xl ${star <= rating ? 'text-yellow-500' : 'text-gray-300'}`}
                 >
                   ⭐
                 </button>
@@ -352,18 +352,18 @@ export default function OrderDetail() {
             </div>
           </div>
           <div className="mb-4">
-            <label className="block mb-2">Review</label>
+            <label className="block mb-2 text-sm sm:text-base">Review</label>
             <textarea
               value={review}
               onChange={(e) => setReview(e.target.value)}
-              className="w-full px-4 py-2 border rounded"
+              className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               rows="4"
               placeholder="Write your review..."
             />
           </div>
           <button
             onClick={handleSubmitReview}
-            className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition"
+            className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition text-sm sm:text-base font-semibold"
           >
             Submit Review
           </button>
@@ -371,24 +371,24 @@ export default function OrderDetail() {
       )}
 
       {order.rating && (
-        <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-2">Your Review</h2>
+        <div className="bg-white rounded-lg shadow p-4 md:p-6 mb-4 md:mb-6">
+          <h2 className="text-lg sm:text-xl font-semibold mb-2">Your Review</h2>
           <div className="flex items-center mb-2">
             {[1, 2, 3, 4, 5].map((star) => (
-              <span key={star} className={`text-2xl ${star <= order.rating ? 'text-yellow-500' : 'text-gray-300'}`}>
+              <span key={star} className={`text-xl sm:text-2xl ${star <= order.rating ? 'text-yellow-500' : 'text-gray-300'}`}>
                 ⭐
               </span>
             ))}
           </div>
-          {order.review && <p className="text-gray-700">{order.review}</p>}
+          {order.review && <p className="text-sm sm:text-base text-gray-700">{order.review}</p>}
         </div>
       )}
 
       {canReorder() && (
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-lg shadow p-4 md:p-6">
           <button
             onClick={handleReorder}
-            className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition font-semibold"
+            className="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition font-semibold text-sm sm:text-base"
           >
             🔄 Reorder This Order
           </button>

@@ -41,28 +41,28 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary via-pink-500 to-secondary text-white py-24 relative overflow-hidden">
+      <section className="bg-gradient-to-r from-primary via-pink-500 to-secondary text-white py-12 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-6xl md:text-7xl font-bold mb-4 drop-shadow-lg">SEA EXPRESS</h1>
-          <p className="text-xl md:text-2xl mb-2 font-semibold">အတွင်းမြို့နယ်အလိုက် အစားအသောက်၊ ကုန်ပစ္စည်းများ ပို့ဆောင်ပေးခြင်း</p>
-          <p className="text-lg mb-8 text-gray-100">Fast, Reliable, and Convenient Delivery Service</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 drop-shadow-lg">SEA EXPRESS</h1>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-2 font-semibold px-2">အတွင်းမြို့နယ်အလိုက် အစားအသောက်၊ ကုန်ပစ္စည်းများ ပို့ဆောင်ပေးခြင်း</p>
+          <p className="text-sm sm:text-base md:text-lg mb-6 md:mb-8 text-gray-100 px-2">Fast, Reliable, and Convenient Delivery Service</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
             <Link
               to="/restaurants"
-              className="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg text-lg"
+              className="bg-white text-primary px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg text-sm sm:text-base md:text-lg"
             >
               🍽️ Browse Restaurants
             </Link>
             <Link
               to="/shops"
-              className="bg-accent text-white px-8 py-4 rounded-lg font-bold hover:bg-green-600 transition transform hover:scale-105 shadow-lg text-lg"
+              className="bg-accent text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-bold hover:bg-green-600 transition transform hover:scale-105 shadow-lg text-sm sm:text-base md:text-lg"
             >
               🛍️ Browse Shops
             </Link>
             <Link
               to="/delivery"
-              className="bg-secondary text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-600 transition transform hover:scale-105 shadow-lg text-lg"
+              className="bg-secondary text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-bold hover:bg-blue-600 transition transform hover:scale-105 shadow-lg text-sm sm:text-base md:text-lg"
             >
               📦 User-to-User Delivery
             </Link>
@@ -71,71 +71,71 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-white py-12 border-b">
+      <section className="bg-white py-8 md:py-12 border-b">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-center">
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">100+</div>
-              <div className="text-gray-600">Restaurants</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-1 md:mb-2">100+</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-600">Restaurants</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-secondary mb-2">50+</div>
-              <div className="text-gray-600">Shops</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary mb-1 md:mb-2">50+</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-600">Shops</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-accent mb-2">500+</div>
-              <div className="text-gray-600">Happy Customers</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 md:mb-2">500+</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-600">Happy Customers</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-              <div className="text-gray-600">Support</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-1 md:mb-2">24/7</div>
+              <div className="text-xs sm:text-sm md:text-base text-gray-600">Support</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-16 container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 text-text">Why Choose SEA EXPRESS?</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
-            <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-4xl">🚚</span>
+      <section className="py-8 md:py-16 container mx-auto px-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 md:mb-12 text-text">Why Choose SEA EXPRESS?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+          <div className="text-center p-4 md:p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+            <div className="bg-primary/10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+              <span className="text-3xl sm:text-4xl">🚚</span>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Fast Delivery</h3>
-            <p className="text-gray-600">Quick and reliable delivery service within your township</p>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2">Fast Delivery</h3>
+            <p className="text-sm sm:text-base text-gray-600">Quick and reliable delivery service within your township</p>
           </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
-            <div className="bg-secondary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-4xl">💳</span>
+          <div className="text-center p-4 md:p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+            <div className="bg-secondary/10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+              <span className="text-3xl sm:text-4xl">💳</span>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Multiple Payment Options</h3>
-            <p className="text-gray-600">COD, KBZ Pay, Wave Money, Bank Transfer</p>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2">Multiple Payment Options</h3>
+            <p className="text-sm sm:text-base text-gray-600">COD, KBZ Pay, Wave Money, Bank Transfer</p>
           </div>
-          <div className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition">
-            <div className="bg-accent/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-4xl">⭐</span>
+          <div className="text-center p-4 md:p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition sm:col-span-2 md:col-span-1">
+            <div className="bg-accent/10 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+              <span className="text-3xl sm:text-4xl">⭐</span>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Quality Service</h3>
-            <p className="text-gray-600">Rated restaurants and shops with verified reviews</p>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2">Quality Service</h3>
+            <p className="text-sm sm:text-base text-gray-600">Rated restaurants and shops with verified reviews</p>
           </div>
         </div>
       </section>
 
       {/* Popular Restaurants */}
       {!loading && popularRestaurants.length > 0 && (
-        <section className="bg-gray-50 py-16">
+        <section className="bg-gray-50 py-8 md:py-16">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold text-text">⭐ Popular Restaurants</h2>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 md:mb-8 gap-2">
+              <h2 className="text-2xl sm:text-3xl font-bold text-text">⭐ Popular Restaurants</h2>
               <Link
                 to="/restaurants"
-                className="text-primary hover:text-primary-dark font-semibold"
+                className="text-primary hover:text-primary-dark font-semibold text-sm sm:text-base"
               >
                 View All →
               </Link>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {popularRestaurants.map((restaurant) => (
                 <Link
                   key={restaurant._id}
@@ -146,10 +146,10 @@ export default function Home() {
                     <img
                       src={restaurant.profileImage || restaurant.images[0]}
                       alt={restaurant.name}
-                      className="w-full h-48 object-cover"
+                      className="w-full h-40 sm:h-48 object-cover"
                     />
                   )}
-                  <div className="p-4">
+                  <div className="p-3 md:p-4">
                     {/* Active Promotions */}
                     {restaurant.promotions && restaurant.promotions.length > 0 && (() => {
                       const now = new Date()
@@ -160,20 +160,20 @@ export default function Home() {
                         return now >= start && now <= end
                       })
                       return activePromo ? (
-                        <div className="mb-2 p-1 bg-red-500 text-white rounded text-xs font-bold text-center">
+                        <div className="mb-2 p-1.5 sm:p-2 bg-red-500 text-white rounded text-xs sm:text-sm font-bold text-center">
                           🎉 {activePromo.discountPercentage}% OFF
                         </div>
                       ) : null
                     })()}
                     
-                    <h3 className="text-xl font-semibold mb-1">{restaurant.name}</h3>
-                    <p className="text-gray-600 text-sm mb-2">{restaurant.nameMyanmar}</p>
+                    <h3 className="text-lg sm:text-xl font-semibold mb-1 truncate">{restaurant.name}</h3>
+                    <p className="text-gray-600 text-xs sm:text-sm mb-2 line-clamp-2">{restaurant.nameMyanmar}</p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
-                        <span className="text-yellow-500 text-lg">⭐</span>
-                        <span className="ml-1 font-semibold">{restaurant.rating.toFixed(1)}</span>
+                        <span className="text-yellow-500 text-base sm:text-lg">⭐</span>
+                        <span className="ml-1 font-semibold text-sm sm:text-base">{restaurant.rating.toFixed(1)}</span>
                       </div>
-                      <span className="text-gray-500 text-sm">{restaurant.address?.township}</span>
+                      <span className="text-gray-500 text-xs sm:text-sm truncate ml-2">{restaurant.address?.township}</span>
                     </div>
                   </div>
                 </Link>
@@ -185,17 +185,17 @@ export default function Home() {
 
       {/* Popular Shops */}
       {!loading && popularShops.length > 0 && (
-        <section className="py-16 container mx-auto px-4">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold text-text">🛍️ Popular Shops</h2>
+        <section className="py-8 md:py-16 container mx-auto px-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 md:mb-8 gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold text-text">🛍️ Popular Shops</h2>
             <Link
               to="/shops"
-              className="text-primary hover:text-primary-dark font-semibold"
+              className="text-primary hover:text-primary-dark font-semibold text-sm sm:text-base"
             >
               View All →
             </Link>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {popularShops.map((shop) => (
               <Link
                 key={shop._id}
@@ -206,10 +206,10 @@ export default function Home() {
                   <img
                     src={shop.profileImage || shop.images[0]}
                     alt={shop.name}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-40 sm:h-48 object-cover"
                   />
                 )}
-                <div className="p-4">
+                <div className="p-3 md:p-4">
                   {/* Active Promotions */}
                   {shop.promotions && shop.promotions.length > 0 && (() => {
                     const now = new Date()
@@ -220,20 +220,20 @@ export default function Home() {
                       return now >= start && now <= end
                     })
                     return activePromo ? (
-                      <div className="mb-2 p-1 bg-red-500 text-white rounded text-xs font-bold text-center">
+                      <div className="mb-2 p-1.5 sm:p-2 bg-red-500 text-white rounded text-xs sm:text-sm font-bold text-center">
                         🎉 {activePromo.discountPercentage}% OFF
                       </div>
                     ) : null
                   })()}
                   
-                  <h3 className="text-xl font-semibold mb-1">{shop.name}</h3>
-                  <p className="text-gray-600 text-sm mb-2">{shop.nameMyanmar}</p>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-1 truncate">{shop.name}</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm mb-2 line-clamp-2">{shop.nameMyanmar}</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <span className="text-yellow-500 text-lg">⭐</span>
-                      <span className="ml-1 font-semibold">{shop.rating.toFixed(1)}</span>
+                      <span className="text-yellow-500 text-base sm:text-lg">⭐</span>
+                      <span className="ml-1 font-semibold text-sm sm:text-base">{shop.rating.toFixed(1)}</span>
                     </div>
-                    <span className="text-gray-500 text-sm">{shop.address?.township}</span>
+                    <span className="text-gray-500 text-xs sm:text-sm truncate ml-2">{shop.address?.township}</span>
                   </div>
                 </div>
               </Link>
@@ -243,56 +243,56 @@ export default function Home() {
       )}
 
       {/* Delivery Zones */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-gray-50 py-8 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-4 text-text">Delivery Zones (Yangon)</h2>
-          <p className="text-center text-gray-600 mb-12">Affordable delivery fees based on your location</p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition text-center">
-              <div className="text-4xl mb-3">🏙️</div>
-              <h3 className="font-semibold text-lg mb-2">ဗဟိုခရိုင်</h3>
-              <p className="text-primary text-3xl font-bold mb-1">2,500 Ks</p>
-              <p className="text-sm text-gray-500">Central District</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-2 md:mb-4 text-text">Delivery Zones (Yangon)</h2>
+          <p className="text-center text-sm sm:text-base text-gray-600 mb-6 md:mb-12 px-2">Affordable delivery fees based on your location</p>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition text-center">
+              <div className="text-3xl sm:text-4xl mb-2 md:mb-3">🏙️</div>
+              <h3 className="font-semibold text-sm sm:text-base md:text-lg mb-1 md:mb-2">ဗဟိုခရိုင်</h3>
+              <p className="text-primary text-2xl sm:text-3xl font-bold mb-1">2,500 Ks</p>
+              <p className="text-xs sm:text-sm text-gray-500">Central District</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition text-center">
-              <div className="text-4xl mb-3">🌅</div>
-              <h3 className="font-semibold text-lg mb-2">အရှေ့ပိုင်း</h3>
-              <p className="text-primary text-3xl font-bold mb-1">3,000 Ks</p>
-              <p className="text-sm text-gray-500">East Zone</p>
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition text-center">
+              <div className="text-3xl sm:text-4xl mb-2 md:mb-3">🌅</div>
+              <h3 className="font-semibold text-sm sm:text-base md:text-lg mb-1 md:mb-2">အရှေ့ပိုင်း</h3>
+              <p className="text-primary text-2xl sm:text-3xl font-bold mb-1">3,000 Ks</p>
+              <p className="text-xs sm:text-sm text-gray-500">East Zone</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition text-center">
-              <div className="text-4xl mb-3">🌇</div>
-              <h3 className="font-semibold text-lg mb-2">အနောက်ပိုင်း</h3>
-              <p className="text-primary text-3xl font-bold mb-1">3,500 Ks</p>
-              <p className="text-sm text-gray-500">West Zone</p>
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition text-center">
+              <div className="text-3xl sm:text-4xl mb-2 md:mb-3">🌇</div>
+              <h3 className="font-semibold text-sm sm:text-base md:text-lg mb-1 md:mb-2">အနောက်ပိုင်း</h3>
+              <p className="text-primary text-2xl sm:text-3xl font-bold mb-1">3,500 Ks</p>
+              <p className="text-xs sm:text-sm text-gray-500">West Zone</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition text-center">
-              <div className="text-4xl mb-3">🏞️</div>
-              <h3 className="font-semibold text-lg mb-2">အဝေးပိုင်း</h3>
-              <p className="text-primary text-3xl font-bold mb-1">4,000+ Ks</p>
-              <p className="text-sm text-gray-500">Outer Areas</p>
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition text-center">
+              <div className="text-3xl sm:text-4xl mb-2 md:mb-3">🏞️</div>
+              <h3 className="font-semibold text-sm sm:text-base md:text-lg mb-1 md:mb-2">အဝေးပိုင်း</h3>
+              <p className="text-primary text-2xl sm:text-3xl font-bold mb-1">4,000+ Ks</p>
+              <p className="text-xs sm:text-sm text-gray-500">Outer Areas</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-primary to-secondary text-white py-16">
+      <section className="bg-gradient-to-r from-primary to-secondary text-white py-8 md:py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Order?</h2>
-          <p className="text-xl mb-8 text-gray-100">Start ordering your favorite food and products now!</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 md:mb-4">Ready to Order?</h2>
+          <p className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 text-gray-100 px-2">Start ordering your favorite food and products now!</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4">
             {!isAuthenticated ? (
               <>
                 <Link
                   to="/register"
-                  className="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg text-lg"
+                  className="bg-white text-primary px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg text-sm sm:text-base md:text-lg"
                 >
                   Create Account
                 </Link>
                 <Link
                   to="/login"
-                  className="bg-accent text-white px-8 py-4 rounded-lg font-bold hover:bg-green-600 transition transform hover:scale-105 shadow-lg text-lg"
+                  className="bg-accent text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-bold hover:bg-green-600 transition transform hover:scale-105 shadow-lg text-sm sm:text-base md:text-lg"
                 >
                   Login
                 </Link>
@@ -300,7 +300,7 @@ export default function Home() {
             ) : (
               <Link
                 to="/restaurants"
-                className="bg-white text-primary px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg text-lg"
+                className="bg-white text-primary px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-bold hover:bg-gray-100 transition transform hover:scale-105 shadow-lg text-sm sm:text-base md:text-lg"
               >
                 Start Ordering Now
               </Link>

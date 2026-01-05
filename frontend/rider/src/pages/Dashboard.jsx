@@ -95,76 +95,65 @@ export default function Dashboard() {
   }
 
   if (loading) {
-    return <div className="container mx-auto px-4 py-8 text-center">Loading...</div>
+    return <div className="container mx-auto px-3 sm:px-4 py-8 text-center">Loading...</div>
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-4">
-        <button
-          onClick={async () => {
-            console.log('Testing sound...')
-            await playOrderNotificationSound()
-          }}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition text-sm"
-        >
-         
-        </button>
-      </div>
-      <h1 className="text-3xl font-bold mb-6">Rider Dashboard</h1>
+    <div className="container mx-auto px-3 sm:px-4 py-4 md:py-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6">Rider Dashboard</h1>
 
-      <div className="grid md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-gray-600 mb-2">Total Earnings</h3>
-          <p className="text-3xl font-bold text-primary">{stats?.totalEarnings || 0} Ks</p>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 lg:gap-6 mb-6 md:mb-8">
+        <div className="bg-white rounded-lg shadow p-4 md:p-6">
+          <h3 className="text-xs sm:text-sm text-gray-600 mb-1 md:mb-2">Total Earnings</h3>
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">{stats?.totalEarnings || 0} Ks</p>
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-gray-600 mb-2">Available Balance</h3>
-          <p className="text-3xl font-bold text-green-600">{stats?.availableBalance || 0} Ks</p>
+        <div className="bg-white rounded-lg shadow p-4 md:p-6">
+          <h3 className="text-xs sm:text-sm text-gray-600 mb-1 md:mb-2">Available Balance</h3>
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-green-600">{stats?.availableBalance || 0} Ks</p>
           {stats?.availableBalance > 0 && (
             <Link
               to="/withdrawal"
-              className="mt-2 inline-block text-sm text-primary hover:underline"
+              className="mt-1 md:mt-2 inline-block text-xs sm:text-sm text-primary hover:underline"
             >
               Withdraw →
             </Link>
           )}
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-gray-600 mb-2">Total Deliveries</h3>
-          <p className="text-3xl font-bold text-secondary">{stats?.totalDeliveries || 0}</p>
+        <div className="bg-white rounded-lg shadow p-4 md:p-6">
+          <h3 className="text-xs sm:text-sm text-gray-600 mb-1 md:mb-2">Total Deliveries</h3>
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-secondary">{stats?.totalDeliveries || 0}</p>
         </div>
-        <div className="bg-white rounded-lg shadow p-6">
-          <h3 className="text-gray-600 mb-2">Active Orders</h3>
-          <p className="text-3xl font-bold text-accent">{activeOrdersCount}</p>
+        <div className="bg-white rounded-lg shadow p-4 md:p-6">
+          <h3 className="text-xs sm:text-sm text-gray-600 mb-1 md:mb-2">Active Orders</h3>
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-accent">{activeOrdersCount}</p>
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
         <Link
           to="/orders/available"
-          className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition block"
+          className="bg-white rounded-lg shadow p-4 md:p-6 hover:shadow-lg active:shadow-md transition block touch-manipulation"
         >
-          <h2 className="text-xl font-semibold mb-2">Available Orders</h2>
-          <p className="text-gray-600">View and accept new delivery orders</p>
+          <h2 className="text-lg sm:text-xl font-semibold mb-2">📦 Available Orders</h2>
+          <p className="text-sm sm:text-base text-gray-600">View and accept new delivery orders</p>
         </Link>
 
         <Link
           to="/orders"
-          className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition block"
+          className="bg-white rounded-lg shadow p-4 md:p-6 hover:shadow-lg active:shadow-md transition block touch-manipulation"
         >
-          <h2 className="text-xl font-semibold mb-2">My Orders</h2>
-          <p className="text-gray-600">Manage your active deliveries</p>
+          <h2 className="text-lg sm:text-xl font-semibold mb-2">📋 My Orders</h2>
+          <p className="text-sm sm:text-base text-gray-600">Manage your active deliveries</p>
         </Link>
 
         <Link
           to="/withdrawal"
-          className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition block"
+          className="bg-white rounded-lg shadow p-4 md:p-6 hover:shadow-lg active:shadow-md transition block touch-manipulation sm:col-span-2 md:col-span-1"
         >
-          <h2 className="text-xl font-semibold mb-2">Withdraw Earnings</h2>
-          <p className="text-gray-600">Request withdrawal of your earnings</p>
+          <h2 className="text-lg sm:text-xl font-semibold mb-2">💰 Withdraw Earnings</h2>
+          <p className="text-sm sm:text-base text-gray-600">Request withdrawal of your earnings</p>
           {stats?.availableBalance > 0 && (
-            <p className="text-primary font-semibold mt-2">{stats.availableBalance} Ks available</p>
+            <p className="text-primary font-semibold mt-2 text-sm sm:text-base">{stats.availableBalance} Ks available</p>
           )}
         </Link>
       </div>

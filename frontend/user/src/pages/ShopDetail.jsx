@@ -108,18 +108,18 @@ export default function ShopDetail() {
   const closedToday = isClosedToday()
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-4 md:py-8">
       {/* Promotion Notification */}
       {notification && (
-        <div className="mb-4 p-4 bg-green-100 border-2 border-green-500 rounded-lg">
-          <p className="font-bold text-green-800">{notification.message}</p>
+        <div className="mb-4 p-3 md:p-4 bg-green-100 border-2 border-green-500 rounded-lg">
+          <p className="font-bold text-sm sm:text-base text-green-800">{notification.message}</p>
         </div>
       )}
 
       {/* Closed Today Notice */}
       {closedToday && (
-        <div className="mb-4 p-4 bg-red-100 border-2 border-red-500 rounded-lg">
-          <p className="font-bold text-red-800">🚫 This shop is closed today</p>
+        <div className="mb-4 p-3 md:p-4 bg-red-100 border-2 border-red-500 rounded-lg">
+          <p className="font-bold text-sm sm:text-base text-red-800">🚫 This shop is closed today</p>
           {shop.closingDays.find(day => {
             const today = new Date()
             today.setHours(0, 0, 0, 0)
@@ -142,17 +142,17 @@ export default function ShopDetail() {
 
       {/* Active Promotions */}
       {activePromotions.length > 0 && (
-        <div className="mb-6 space-y-3">
+        <div className="mb-4 md:mb-6 space-y-3">
           {activePromotions.map((promo) => (
-            <div key={promo._id} className="p-4 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg shadow-lg">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="font-bold text-xl mb-1">{promo.title}</h3>
-                  {promo.titleMyanmar && <p className="text-sm opacity-90 mb-1">{promo.titleMyanmar}</p>}
-                  {promo.description && <p className="text-sm opacity-80">{promo.description}</p>}
+            <div key={promo._id} className="p-3 md:p-4 bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-lg shadow-lg">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="flex-1">
+                  <h3 className="font-bold text-lg sm:text-xl mb-1">{promo.title}</h3>
+                  {promo.titleMyanmar && <p className="text-xs sm:text-sm opacity-90 mb-1">{promo.titleMyanmar}</p>}
+                  {promo.description && <p className="text-xs sm:text-sm opacity-80">{promo.description}</p>}
                 </div>
-                <div className="text-right">
-                  <div className="bg-white text-red-600 px-4 py-2 rounded-lg font-bold text-2xl">
+                <div className="text-right sm:text-right">
+                  <div className="bg-white text-red-600 px-3 py-2 sm:px-4 rounded-lg font-bold text-xl sm:text-2xl">
                     {promo.discountPercentage}% OFF
                   </div>
                   <p className="text-xs mt-1 opacity-80">
@@ -165,57 +165,57 @@ export default function ShopDetail() {
         </div>
       )}
 
-      <div className="mb-6">
+      <div className="mb-4 md:mb-6">
         {(shop.profileImage || shop.images?.[0]) && (
           <img
             src={shop.profileImage || shop.images[0]}
             alt={shop.name}
-            className="w-full h-64 object-cover rounded-lg mb-4"
+            className="w-full h-48 sm:h-64 object-cover rounded-lg mb-3 md:mb-4"
           />
         )}
-        <h1 className="text-3xl font-bold mb-2">{shop.name}</h1>
-        <p className="text-xl text-gray-600 mb-4">{shop.nameMyanmar}</p>
+        <h1 className="text-2xl sm:text-3xl font-bold mb-2">{shop.name}</h1>
+        <p className="text-lg sm:text-xl text-gray-600 mb-3 md:mb-4">{shop.nameMyanmar}</p>
         <div className="flex items-center space-x-4">
           <div className="flex items-center">
-            <span className="text-yellow-500">⭐</span>
-            <span className="ml-1">{shop.rating.toFixed(1)}</span>
+            <span className="text-yellow-500 text-lg sm:text-xl">⭐</span>
+            <span className="ml-1 text-sm sm:text-base">{shop.rating.toFixed(1)}</span>
           </div>
-          <span className="text-gray-500">{shop.address?.township}</span>
+          <span className="text-gray-500 text-sm sm:text-base">{shop.address?.township}</span>
         </div>
       </div>
 
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Products</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="mb-6 md:mb-8">
+        <h2 className="text-xl sm:text-2xl font-semibold mb-3 md:mb-4">Products</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {shop.products?.filter(item => item.isAvailable && item.stock > 0).map((item) => (
-            <div key={item._id} className="bg-white border rounded-lg p-4">
+            <div key={item._id} className="bg-white border rounded-lg p-3 md:p-4 hover:shadow-md transition">
               {item.image && (
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-32 object-cover rounded mb-2"
+                  className="w-full h-32 sm:h-40 object-cover rounded mb-2"
                 />
               )}
-              <h3 className="font-semibold">{item.name}</h3>
-              <p className="text-sm text-gray-600 mb-2">{item.nameMyanmar}</p>
-              <div className="flex items-center justify-between mb-2">
+              <h3 className="font-semibold text-sm sm:text-base mb-1">{item.name}</h3>
+              <p className="text-xs sm:text-sm text-gray-600 mb-2">{item.nameMyanmar}</p>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 gap-2">
                 {item.discountPercentage > 0 && item.originalPrice ? (
-                  <div className="flex items-center gap-2">
-                    <div>
-                      <span className="text-sm line-through text-gray-400">{item.originalPrice} Ks</span>
-                      <span className="text-primary font-bold ml-2">{item.price} Ks</span>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
+                      <span className="text-xs sm:text-sm line-through text-gray-400">{item.originalPrice} Ks</span>
+                      <span className="text-primary font-bold text-sm sm:text-base">{item.price} Ks</span>
                     </div>
                     <span className="bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
                       -{item.discountPercentage}%
                     </span>
                   </div>
                 ) : (
-                  <span className="text-primary font-bold">{item.price} Ks</span>
+                  <span className="text-primary font-bold text-sm sm:text-base">{item.price} Ks</span>
                 )}
               </div>
               <button
                 onClick={() => handleAddToCart(item)}
-                className="w-full bg-primary text-white px-4 py-1 rounded hover:bg-primary-dark transition"
+                className="w-full bg-primary text-white px-4 py-3 sm:py-2 rounded-lg hover:bg-primary-dark active:bg-primary-dark transition text-sm sm:text-base font-semibold touch-manipulation min-h-[44px] shadow-md"
               >
                 Add to Cart
               </button>

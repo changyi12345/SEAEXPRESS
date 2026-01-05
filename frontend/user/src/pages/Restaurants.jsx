@@ -49,22 +49,22 @@ export default function Restaurants() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-text">Restaurants</h1>
+    <div className="container mx-auto px-4 py-4 md:py-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6 text-text">Restaurants</h1>
       
-      <div className="mb-6 space-y-4">
-        <div className="flex flex-col md:flex-row gap-4">
+      <div className="mb-4 md:mb-6 space-y-3 md:space-y-4">
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
           <input
             type="text"
             placeholder="Search restaurants..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className="flex-1 px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           />
           <select
             value={townshipFilter}
             onChange={(e) => setTownshipFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className="px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="">All Townships</option>
             <option value="Bahan">Bahan</option>
@@ -79,7 +79,7 @@ export default function Restaurants() {
           <select
             value={zoneFilter}
             onChange={(e) => setZoneFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className="px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="">All Zones</option>
             <option value="ဗဟိုခရိုင်">ဗဟိုခရိုင်</option>
@@ -90,7 +90,7 @@ export default function Restaurants() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className="px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="rating">Sort by Rating</option>
             <option value="name">Sort by Name</option>
@@ -98,7 +98,7 @@ export default function Restaurants() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {restaurants.map((restaurant) => (
           <Link
             key={restaurant._id}

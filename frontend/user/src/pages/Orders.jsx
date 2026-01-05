@@ -109,42 +109,45 @@ export default function Orders() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">My Orders</h1>
+    <div className="container mx-auto px-3 sm:px-4 py-4 md:py-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6">My Orders</h1>
 
       {orders.length === 0 ? (
-        <div className="text-center py-12">
-          <p className="text-gray-500 mb-4">No orders yet</p>
+        <div className="text-center py-12 md:py-16">
+          <div className="text-6xl mb-4">📦</div>
+          <p className="text-gray-600 mb-6 text-base">No orders yet</p>
           <Link
             to="/restaurants"
-            className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition"
+            className="inline-block bg-primary text-white px-8 py-3.5 rounded-lg hover:bg-primary-dark active:bg-primary-dark transition font-semibold text-base touch-manipulation min-h-[44px] shadow-lg"
           >
             Browse Restaurants
           </Link>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {orders.map((order) => (
             <Link
               key={order._id}
               to={`/orders/${order._id}`}
-              className="block bg-white rounded-lg shadow p-6 hover:shadow-lg transition"
+              className="block bg-white rounded-lg shadow-md p-4 md:p-6 hover:shadow-lg active:shadow-md transition touch-manipulation border border-gray-100"
             >
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="font-semibold text-lg">Order #{order.orderNumber}</h3>
-                  <p className="text-gray-600">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <h3 className="font-semibold text-base sm:text-lg">Order #{order.orderNumber}</h3>
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
+                      {getStatusText(order.status)}
+                    </span>
+                  </div>
+                  <p className="text-sm sm:text-base text-gray-700 font-medium truncate mb-1">
                     {order.restaurant?.name || order.shop?.name}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-xs sm:text-sm text-gray-500">
                     {new Date(order.createdAt).toLocaleString()}
                   </p>
                 </div>
-                <div className="text-right">
-                  <span className={`px-3 py-1 rounded-full text-sm ${getStatusColor(order.status)}`}>
-                    {getStatusText(order.status)}
-                  </span>
-                  <p className="text-primary font-bold mt-2">{order.total} Ks</p>
+                <div className="flex items-center justify-end w-full sm:w-auto">
+                  <p className="text-primary font-bold text-lg sm:text-xl">{order.total} Ks</p>
                 </div>
               </div>
             </Link>

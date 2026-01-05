@@ -200,11 +200,12 @@ export default function Cart() {
 
   if (cart.items.length === 0) {
     return (
-      <div className="container mx-auto px-4 py-8 text-center">
-        <p className="text-gray-500 mb-4">Your cart is empty</p>
+      <div className="container mx-auto px-4 py-12 text-center">
+        <div className="text-6xl mb-4">🛒</div>
+        <p className="text-gray-600 text-base mb-6">Your cart is empty</p>
         <button
           onClick={() => navigate('/restaurants')}
-          className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition"
+          className="bg-primary text-white px-8 py-3.5 rounded-lg hover:bg-primary-dark active:bg-primary-dark transition font-semibold touch-manipulation min-h-[44px]"
         >
           Browse Restaurants
         </button>
@@ -215,73 +216,76 @@ export default function Cart() {
   const total = getCartTotal() + deliveryFee
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Cart</h1>
+    <div className="container mx-auto px-3 sm:px-4 py-4 md:py-8 pb-20 sm:pb-8 safe-area-bottom">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6">Cart</h1>
 
-      <div className="grid md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
-          <div className="bg-white rounded-lg shadow p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4">Items</h2>
+      <div className="grid lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+        <div className="lg:col-span-2">
+          <div className="bg-white rounded-lg shadow p-3 sm:p-4 md:p-6 mb-4 md:mb-6">
+            <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Items</h2>
             {cart.items.map((item, index) => (
-              <div key={index} className="flex items-center justify-between border-b pb-4 mb-4">
-                <div className="flex items-center space-x-4">
+              <div key={index} className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-gray-200 pb-4 mb-4 last:mb-0 last:border-0 gap-3">
+                <div className="flex items-center space-x-3 flex-1 min-w-0 w-full sm:w-auto">
                   {item.image && (
-                    <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
+                    <img src={item.image} alt={item.name} className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg flex-shrink-0" />
                   )}
-                  <div>
-                    <h3 className="font-semibold">{item.name}</h3>
-                    <p className="text-sm text-gray-600">{item.nameMyanmar}</p>
-                    <p className="text-primary font-bold">{item.price} Ks</p>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-semibold text-sm sm:text-base truncate">{item.name}</h3>
+                    <p className="text-xs sm:text-sm text-gray-600 truncate mb-1">{item.nameMyanmar}</p>
+                    <p className="text-primary font-bold text-sm sm:text-base">{item.price} Ks</p>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-between w-full sm:w-auto gap-3">
+                  <div className="flex items-center space-x-2 bg-gray-100 rounded-lg p-1">
                     <button
                       onClick={() => updateQuantity(item.itemId, item.itemType, item.quantity - 1)}
-                      className="w-8 h-8 rounded border"
+                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-md bg-white border border-gray-300 hover:bg-gray-50 active:bg-gray-100 transition font-semibold text-base touch-manipulation flex items-center justify-center"
+                      aria-label="Decrease quantity"
                     >
-                      -
+                      −
                     </button>
-                    <span>{item.quantity}</span>
+                    <span className="w-10 text-center text-sm sm:text-base font-semibold">{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.itemId, item.itemType, item.quantity + 1)}
-                      className="w-8 h-8 rounded border"
+                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-md bg-white border border-gray-300 hover:bg-gray-50 active:bg-gray-100 transition font-semibold text-base touch-manipulation flex items-center justify-center"
+                      aria-label="Increase quantity"
                     >
                       +
                     </button>
                   </div>
                   <button
                     onClick={() => removeFromCart(item.itemId, item.itemType)}
-                    className="text-red-500 hover:text-red-700"
+                    className="text-red-500 hover:text-red-700 active:text-red-800 text-sm sm:text-base px-3 py-2 rounded-lg hover:bg-red-50 active:bg-red-100 transition touch-manipulation min-h-[44px]"
+                    aria-label="Remove item"
                   >
-                    Remove
+                    🗑️
                   </button>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4">Delivery Address</h2>
-            <div className="space-y-4">
+          <div className="bg-white rounded-lg shadow p-4 md:p-6">
+            <h2 className="text-lg md:text-xl font-semibold mb-4">Delivery Address</h2>
+            <div className="space-y-3 md:space-y-4">
               <input
                 type="text"
                 placeholder="Street Address"
                 value={deliveryAddress.street}
                 onChange={(e) => setDeliveryAddress({ ...deliveryAddress, street: e.target.value })}
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <input
                 type="text"
                 placeholder="Township"
                 value={deliveryAddress.township}
                 onChange={(e) => setDeliveryAddress({ ...deliveryAddress, township: e.target.value })}
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <select
                 value={deliveryAddress.zone}
                 onChange={(e) => setDeliveryAddress({ ...deliveryAddress, zone: e.target.value })}
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="">Select Zone</option>
                 <option value="ဗဟိုခရိုင်">ဗဟိုခရိုင်</option>
@@ -294,36 +298,36 @@ export default function Cart() {
                 placeholder="Phone Number"
                 value={deliveryAddress.phone}
                 onChange={(e) => setDeliveryAddress({ ...deliveryAddress, phone: e.target.value })}
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
           </div>
         </div>
 
         <div>
-          <div className="bg-white rounded-lg shadow p-6 sticky top-20">
-            <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
+          <div className="bg-white rounded-lg shadow p-4 md:p-6 lg:sticky lg:top-20">
+            <h2 className="text-lg sm:text-xl font-semibold mb-4">Order Summary</h2>
             <div className="space-y-2 mb-4">
-              <div className="flex justify-between">
-                <span>Subtotal</span>
-                <span>{getCartTotal()} Ks</span>
+              <div className="flex justify-between text-sm sm:text-base">
+                <span className="text-gray-600">Subtotal</span>
+                <span className="font-medium">{getCartTotal()} Ks</span>
               </div>
-              <div className="flex justify-between">
-                <span>Delivery Fee</span>
-                <span>{deliveryFee} Ks</span>
+              <div className="flex justify-between text-sm sm:text-base">
+                <span className="text-gray-600">Delivery Fee</span>
+                <span className="font-medium">{deliveryFee} Ks</span>
               </div>
-              <div className="border-t pt-2 flex justify-between font-bold text-lg">
+              <div className="border-t border-gray-200 pt-3 mt-3 flex justify-between font-bold text-base sm:text-lg">
                 <span>Total</span>
                 <span className="text-primary">{total} Ks</span>
               </div>
             </div>
 
             <div className="mb-4">
-              <h3 className="font-semibold mb-2">Payment Method</h3>
+              <h3 className="font-semibold mb-2 text-sm sm:text-base">Payment Method</h3>
               <select
                 value={paymentMethod}
                 onChange={(e) => setPaymentMethod(e.target.value)}
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
               >
                 {availablePaymentMethods.includes('cod') && (
                   <option value="cod">Cash on Delivery</option>
@@ -377,11 +381,12 @@ export default function Cart() {
             {/* Transaction ID Input */}
             {paymentMethod !== 'cod' && (
               <div className="mb-4">
-                <label className="block font-semibold mb-2">
+                <label className="block font-semibold mb-2 text-sm sm:text-base">
                   Transaction ID <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
+                  inputMode="numeric"
                   placeholder="Enter 6-digit transaction ID"
                   value={transactionId}
                   onChange={(e) => {
@@ -389,9 +394,9 @@ export default function Cart() {
                     setTransactionId(value)
                   }}
                   maxLength={6}
-                  className="w-full px-4 py-2 border rounded"
+                  className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary touch-manipulation"
                 />
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-500 mt-1.5">
                   Enter the 6-digit transaction ID from your payment receipt
                 </p>
               </div>
@@ -408,9 +413,19 @@ export default function Cart() {
             <button
               onClick={handleCheckout}
               disabled={loading || (paymentMethod !== 'cod' && (!paymentAccount || !transactionId || transactionId.length !== 6))}
-              className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-primary text-white py-4 rounded-lg hover:bg-primary-dark active:bg-primary-dark transition font-semibold disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation min-h-[52px] text-base sm:text-lg shadow-lg"
             >
-              {loading ? 'Processing...' : 'Place Order'}
+              {loading ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Processing...
+                </span>
+              ) : (
+                'Place Order'
+              )}
             </button>
           </div>
         </div>
