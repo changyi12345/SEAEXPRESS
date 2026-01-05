@@ -1,0 +1,36 @@
+{
+  "name": "seaexpress",
+  "version": "1.0.0",
+  "description": "SEA EXPRESS - Special Service Delivery Platform",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev:backend",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:user": "cd frontend/user && npm run dev",
+    "dev:rider": "cd frontend/rider && npm run dev",
+    "dev:admin": "cd frontend/admin && npm run dev",
+    "dev:restaurant-admin": "cd frontend/restaurant-admin && npm run dev",
+    "dev:shop-admin": "cd frontend/shop-admin && npm run dev",
+    "dev:all": "concurrently \"npm run dev:backend\" \"npm run dev:user\" \"npm run dev:rider\" \"npm run dev:admin\" \"npm run dev:restaurant-admin\" \"npm run dev:shop-admin\"",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend/user && npm install && cd ../rider && npm install && cd ../admin && npm install && cd ../restaurant-admin && npm install && cd ../shop-admin && npm install"
+  },
+  "keywords": [
+    "delivery",
+    "food",
+    "myanmar"
+  ],
+  "author": "SEA EXPRESS",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "firebase": "^12.7.0",
+    "next": "^16.1.1",
+    "react": "^19.2.3"
+  }
+}

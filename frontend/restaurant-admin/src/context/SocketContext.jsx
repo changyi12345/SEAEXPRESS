@@ -1,0 +1,63 @@
+import { createContext, useContext, useEffect, useState } from 'react'
+import { io } from 'socket.io-client'
+import { useAuth } from './AuthContext'
+
+const SocketContext = createContext()
+
+export const useSocket = () => {
+  const context = useContext(SocketContext)
+  if (!context) {
+    throw new Error('useSocket must be used within SocketProvider')
+  }
+  return context
+}
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+
+export const SocketProvider = ({ children }) => {
+  const { user, isAuthenticated } = useAuth()
+  const [socket, setSocket] = useState(null)
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      const newSocket = io(API_URL, {
+        transports: ['websocket', 'polling']
+      })
+
+      newSocket.on('connect', () => {
+        console.log('Restaurant Admin Socket connected:', newSocket.id)
+        const userId = user.id || user._id
+        if (userId) {
+          newSocket.emit('join-room', `restaurant-admin-${userId}`)
+          console.log(`Joined room: restaurant-admin-${userId}`)
+        }
+      })
+
+      newSocket.on('disconnect', () => {
+        console.log('Restaurant Admin Socket disconnected')
+      })
+
+      newSocket.on('error', (error) => {
+        console.error('Socket error:', error)
+      })
+
+      setSocket(newSocket)
+
+      return () => {
+        newSocket.close()
+      }
+    } else {
+      if (socket) {
+        socket.close()
+        setSocket(null)
+      }
+    }
+  }, [isAuthenticated, user?.id, user?._id])
+
+  return (
+    <SocketContext.Provider value={{ socket }}>
+      {children}
+    </SocketContext.Provider>
+  )
+}
+

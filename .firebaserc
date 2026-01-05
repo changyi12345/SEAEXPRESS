@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "seaexpress"
+  },
+  "targets": {
+    "seaexpress": {
+      "hosting": {
+        "seaexpress": [
+          "seaexpress"
+        ]
+      }
+    }
+  }
+}
+
